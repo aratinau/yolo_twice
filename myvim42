@@ -6,7 +6,7 @@
 "    By: zaz <zaz@staff.42.fr>                      +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2013/06/15 12:36:36 by zaz               #+#    #+#              "
-"    Updated: 2015/07/04 18:29:57 by aratinau         ###   ########.fr        "
+"    Updated: 2015/07/05 14:30:49 by aratinau         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -58,3 +58,6 @@ endfunction
 
 call NERDTreeHighlightFile('o', 'yellow', 'none', 'yellow', '#151515')
 call NERDTreeHighlightFile('h', 'green', 'none', 'green', '#151515')
+
+" afficher la liste des buffers
+nmap <F4> :buffers<CR>
