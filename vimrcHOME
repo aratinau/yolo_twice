@@ -1,0 +1,104 @@
+"Activate indentation
+filetype off
+filetype plugin indent on
+set smartindent
+
+"Non-expanded, 4-wide tabulations
+set tabstop=4
+set shiftwidth=4
+set noexpandtab
+
+"Disable vi-compatibility
+set nocompatible
+
+"Real-world encoding
+set encoding=utf-8
+
+"Interpret modelines in files
+set modelines=1
+
+"Do not abandon buffers
+set hidden
+
+"Don't bother throttling tty
+set ttyfast
+
+"More useful backspace behavior
+set backspace=indent,eol,start
+
+"Use statusbar on all windows
+set laststatus=2
+
+"Better search
+set ignorecase
+set smartcase
+set incsearch
+set showmatch
+set hlsearch
+
+"Prevent backups when editing system files
+au BufWrite /private/tmp/crontab.* set nowritebackup
+au BufWrite /private/etc/pw.* set nowritebackup
+
+"Better command completion
+"set wildmenu
+"set wildmode=list:longest
+
+"Show current line
+set cursorline
+
+set nu
+set ruler
+"molokai colosrcheme
+let g:molokai_original = 1
+colorscheme onedark
+"set cc=80
+syntax on
+
+set list
+set listchars=tab:>-,eol:⌇,trail:→
+
+
+"Pathogen
+execute pathogen#infect()
+
+"vim-airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='badwolf'
+
+" shortcuts
+"nmap <C-h> :set nohlsearch<CR>
+nmap <F2> :NERDTreeToggle<CR>
+nmap <F3> :nohlsearch<CR>
+nmap <C-RIGHT> :tabnext<CR>
+nmap <C-LEFT> :tabprevious<CR>
+nmap <C-UP> :tabnew<CR>
+nmap <C-DOWN> :tabclose<CR>
+map <S-RIGHT> :bn<CR>
+map <S-LEFT> :bp<CR>
+map <S-UP> :buffers<CR>
+map <S-DOWN> :Bclose<CR>
+autocmd FileType c,h,sh setlocal cc=80
+hi Normal ctermbg=none
+
+"redirection des swp files
+"set swapfile
+"set dir=~/tmp
+"
+"gundo
+nmap <F5> :GundoToggle<CR>
+
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+	exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+	exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('o', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('h', 'green', 'none', 'green', '#151515')
+
+" afficher la liste des buffers
+nmap <F4> :buffers<CR>
+
+" ignore node_modules pour ctrlp
+let g:ctrlp_custom_ignore = 'vendor\|bower_components\|node_modules\|DS_Store\|git'
